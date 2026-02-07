@@ -1,10 +1,10 @@
 # Jarvis Agent
 
-[![npm version](https://img.shields.io/npm/v/@jarvis/agent-core.svg?style=flat-square)](https://www.npmjs.com/package/@jarvis/agent-core)
-[![license](https://img.shields.io/npm/l/@jarvis/agent-core.svg?style=flat-square)](https://github.com/xuyuyu/jarvis-agent/blob/main/LICENSE)
-[![node](https://img.shields.io/node/v/@jarvis/agent-core.svg?style=flat-square)](https://nodejs.org)
+[![npm version](https://img.shields.io/npm/v/jarvis-agent-core.svg?style=flat-square)](https://www.npmjs.com/package/jarvis-agent-core)
+[![license](https://img.shields.io/npm/l/jarvis-agent-core.svg?style=flat-square)](https://github.com/peiyaocui777/agent-core/blob/main/LICENSE)
+[![node](https://img.shields.io/node/v/jarvis-agent-core.svg?style=flat-square)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![CI](https://img.shields.io/github/actions/workflow/status/xuyuyu/jarvis-agent/ci.yml?style=flat-square&label=CI)](https://github.com/xuyuyu/jarvis-agent/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/peiyaocui777/agent-core/ci.yml?style=flat-square&label=CI)](https://github.com/peiyaocui777/agent-core/actions)
 
 **你的开源 AI 分身** — 类 OpenClaw 的个人 AI 助手，桌面/网页端自用。
 
@@ -43,8 +43,8 @@ npm install @jarvis/agent-core
 **方式 B：从源码安装**
 
 ```bash
-git clone https://github.com/xuyuyu/jarvis-agent.git
-cd jarvis-agent
+git clone https://github.com/peiyaocui777/agent-core.git
+cd agent-core
 npm install
 npm run build
 ```
@@ -76,7 +76,7 @@ npx jarvis-agent chat
 ### 代码方式
 
 ```typescript
-import { createJarvis } from "@jarvis/agent-core";
+import { createJarvis } from "jarvis-agent-core";
 
 const jarvis = await createJarvis({
   agent: {
@@ -260,8 +260,8 @@ npm run test:v9            # Phase 8 测试
 ## 开发
 
 ```bash
-git clone https://github.com/xuyuyu/jarvis-agent.git
-cd jarvis-agent
+git clone https://github.com/peiyaocui777/agent-core.git
+cd agent-core
 npm install
 npm run build              # 编译
 npm run dev                # TypeScript 监视模式

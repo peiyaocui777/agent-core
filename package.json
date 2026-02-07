@@ -103,15 +103,15 @@
     "tauri"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/xuyuyu/jarvis-agent#readme",
+  "homepage": "https://github.com/peiyaocui777/agent-core#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuyuyu/jarvis-agent.git"
+    "url": "git+https://github.com/peiyaocui777/agent-core.git"
   },
   "bugs": {
-    "url": "https://github.com/xuyuyu/jarvis-agent/issues"
+    "url": "https://github.com/peiyaocui777/agent-core/issues"
   },
-  "author": "xuyuyu",
+  "author": "peiyaocui777",
   "engines": {
     "node": ">=18.0.0"
   },
