@@ -22,7 +22,7 @@ import * as path from "path";
 export interface JarvisConfig {
   /** LLM 配置 */
   llm: {
-    provider: "deepseek" | "openai" | "gemini" | "claude" | "ollama";
+    provider: "deepseek" | "openai" | "gemini" | "claude" | "siliconflow" | "zhipu" | "moonshot" | "qwen" | "doubao" | "groq" | "ollama" | "lmstudio" | "custom";
     apiKey?: string;
     model?: string;
     baseUrl?: string;
@@ -284,7 +284,7 @@ export class ConfigLoader {
 
 # LLM 配置
 llm:
-  provider: deepseek          # deepseek / openai / gemini / claude / ollama
+  provider: deepseek          # deepseek / siliconflow / openai / gemini / claude / zhipu / moonshot / qwen / doubao / groq / ollama / lmstudio / custom
   apiKey: ""                  # 或使用环境变量 JARVIS_LLM_API_KEY
   model: deepseek-chat
   temperature: 0.7

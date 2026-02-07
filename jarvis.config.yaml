@@ -3,10 +3,14 @@
 # 详情参考: README.md#configuration
 # ========================================
 
-# LLM 配置 — 硅基流动 SiliconFlow (OpenAI 兼容)
+# LLM 配置
+# 支持 14 种 provider:
+#   国产: deepseek / siliconflow / zhipu / moonshot / qwen / doubao
+#   国际: openai / claude / gemini / groq
+#   本地: ollama / lmstudio / custom
+# apiKey 推荐通过 .env 文件加载（JARVIS_LLM_API_KEY）
 llm:
-  provider: deepseek
-  # apiKey 通过 .env 文件加载，不要写在这里
+  provider: siliconflow
   model: deepseek-ai/DeepSeek-V3
   baseUrl: https://api.siliconflow.cn/v1
   temperature: 0.7

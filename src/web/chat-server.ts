@@ -157,16 +157,35 @@ export class WebChatServer {
       ragPrompt = this.vectorMemory.buildRAGPrompt(message);
     }
 
-    // 调用 Agent
+    // 知识库上下文
+    let kbContext = "";
+    if (this.knowledgeBase) {
+      kbContext = this.knowledgeBase.buildContext(message);
+    }
+
     let reply: string;
     try {
-      const task = await this.agent.run(ragPrompt + message);
-      if (task.status === "completed" && task.steps.length === 0) {
-        reply = this.agent.memory.getRecentMessages(1)[0]?.content || "好的，有什么可以帮你的？";
-      } else if (task.status === "completed") {
-        reply = `已完成: ${task.steps.map(s => s.toolName).join(" → ")}`;
+      if (this.llmClient) {
+        // 有 LLM：直接对话
+        const systemPrompt = `你是 Jarvis，一个强大的 AI 分身助手。请用中文回复。\n${ragPrompt}${kbContext ? "\n## 知识库参考\n" + kbContext + "\n---\n" : ""}`;
+        const response = await this.llmClient.chat(
+          [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: message },
+          ],
+          { maxTokens: 2048 }
+        );
+        reply = response.content;
       } else {
-        reply = `任务执行状态: ${task.status}`;
+        // 无 LLM：走 Agent 工具链
+        const task = await this.agent.run(ragPrompt + message);
+        if (task.status === "completed" && task.steps.length === 0) {
+          reply = this.agent.memory.getRecentMessages(1)[0]?.content || "好的，有什么可以帮你的？";
+        } else if (task.status === "completed") {
+          reply = `已完成: ${task.steps.map(s => s.toolName).join(" → ")}`;
+        } else {
+          reply = `任务状态: ${task.status}`;
+        }
       }
     } catch (error) {
       reply = `执行出错: ${error instanceof Error ? error.message : String(error)}`;

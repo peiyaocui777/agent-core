@@ -381,7 +381,7 @@ export { createMultiPublishTools } from "./tools/multi-publish.js";
 
 // ==================== LLM Provider ====================
 
-export { LLMClient, createLLMClient } from "./providers/llm.js";
+export { LLMClient, createLLMClient, getAvailableProviders } from "./providers/llm.js";
 export type { LLMMessage, LLMResponse, LLMOptions } from "./providers/llm.js";
 
 // ==================== 便捷工厂函数 ====================

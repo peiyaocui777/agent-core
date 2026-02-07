@@ -72,7 +72,7 @@ export interface AgentConfig {
   browserHeadless?: boolean;
   /** LLM Provider 配置 */
   llm?: {
-    provider: "openai" | "deepseek" | "gemini" | "custom";
+    provider: "openai" | "deepseek" | "gemini" | "claude" | "siliconflow" | "zhipu" | "moonshot" | "qwen" | "doubao" | "groq" | "ollama" | "lmstudio" | "custom";
     apiKey: string;
     model?: string;
     baseUrl?: string;

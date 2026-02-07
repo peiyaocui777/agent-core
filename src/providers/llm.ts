@@ -32,24 +32,93 @@ export interface LLMOptions {
 
 // ==================== Provider 配置 ====================
 
-const PROVIDER_DEFAULTS: Record<string, { baseUrl: string; model: string }> = {
+/**
+ * 内置 Provider 配置
+ *
+ * 所有 provider 均使用 OpenAI 兼容 API 格式。
+ * 如果你使用第三方 API 代理（如硅基流动），通过 baseUrl 覆盖即可。
+ */
+const PROVIDER_DEFAULTS: Record<string, { baseUrl: string; model: string; description: string }> = {
+  // ── 国产模型 ──
   deepseek: {
     baseUrl: "https://api.deepseek.com",
     model: "deepseek-chat",
+    description: "DeepSeek 官方 API",
   },
+  siliconflow: {
+    baseUrl: "https://api.siliconflow.cn/v1",
+    model: "deepseek-ai/DeepSeek-V3",
+    description: "硅基流动 — 支持 DeepSeek/Qwen/GLM 等国产模型",
+  },
+  zhipu: {
+    baseUrl: "https://open.bigmodel.cn/api/paas/v4",
+    model: "glm-4-flash",
+    description: "智谱 AI (GLM-4)",
+  },
+  moonshot: {
+    baseUrl: "https://api.moonshot.cn/v1",
+    model: "moonshot-v1-8k",
+    description: "Moonshot (Kimi)",
+  },
+  qwen: {
+    baseUrl: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    model: "qwen-turbo",
+    description: "通义千问 (阿里云 DashScope)",
+  },
+  doubao: {
+    baseUrl: "https://ark.cn-beijing.volces.com/api/v3",
+    model: "doubao-lite-4k",
+    description: "豆包 (字节火山引擎)",
+  },
+
+  // ── 国际模型 ──
   openai: {
-    baseUrl: "https://api.openai.com",
+    baseUrl: "https://api.openai.com/v1",
     model: "gpt-4o-mini",
+    description: "OpenAI (GPT-4o / GPT-4o-mini)",
+  },
+  claude: {
+    baseUrl: "https://api.anthropic.com/v1",
+    model: "claude-sonnet-4-20250514",
+    description: "Anthropic Claude (需要适配器或代理)",
   },
   gemini: {
     baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai",
     model: "gemini-2.0-flash",
+    description: "Google Gemini (OpenAI 兼容格式)",
   },
-  custom: {
+  groq: {
+    baseUrl: "https://api.groq.com/openai/v1",
+    model: "llama-3.3-70b-versatile",
+    description: "Groq — 超低延迟 LLM 推理",
+  },
+
+  // ── 本地模型 ──
+  ollama: {
     baseUrl: "http://localhost:11434/v1",
     model: "llama3",
+    description: "Ollama 本地模型 (Llama3/Qwen2/Gemma2...)",
+  },
+  lmstudio: {
+    baseUrl: "http://localhost:1234/v1",
+    model: "default",
+    description: "LM Studio 本地模型",
+  },
+  custom: {
+    baseUrl: "http://localhost:8080/v1",
+    model: "default",
+    description: "自定义 OpenAI 兼容 API",
   },
 };
+
+/** 获取所有可用 provider 列表 */
+export function getAvailableProviders(): Array<{ name: string; model: string; description: string }> {
+  return Object.entries(PROVIDER_DEFAULTS).map(([name, cfg]) => ({
+    name,
+    model: cfg.model,
+    description: cfg.description,
+  }));
+}
 
 // ==================== LLM Client ====================
 
