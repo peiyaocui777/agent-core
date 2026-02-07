@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  jarvis:
+    build: .
+    container_name: jarvis-agent
+    ports:
+      - "${JARVIS_DASHBOARD_PORT:-3800}:3800"   # Dashboard
+      - "${JARVIS_WEB_PORT:-3900}:3900"          # Web Chat UI
+    volumes:
+      - ./jarvis.config.yaml:/app/jarvis.config.yaml:ro
+      - jarvis-data:/app/data
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  jarvis-data:
+    driver: local

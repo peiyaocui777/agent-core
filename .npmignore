@@ -1,0 +1,11 @@
+src/
+*.ts
+!dist/**/*.d.ts
+tsconfig.json
+.gitignore
+.DS_Store
+node_modules/
+test-*.ts
+*.test.ts
+CONTRIBUTING.md
+.jarvis/

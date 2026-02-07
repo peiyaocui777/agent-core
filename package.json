@@ -1,0 +1,137 @@
+{
+  "name": "jarvis-agent-core",
+  "version": "8.0.0",
+  "description": "AI 分身 (Jarvis) — 开源个人 AI 助手 | 24 模块 · 10 Skills · RAG · 自主决策 · Chat UI · MCP · 多平台发布",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "jarvis-agent": "./dist/cli/bin.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tools": {
+      "import": "./dist/tools/index.js",
+      "types": "./dist/tools/index.d.ts"
+    },
+    "./marketplace": {
+      "import": "./dist/marketplace/index.js",
+      "types": "./dist/marketplace/index.d.ts"
+    },
+    "./dashboard": {
+      "import": "./dist/dashboard/index.js",
+      "types": "./dist/dashboard/index.d.ts"
+    },
+    "./web": {
+      "import": "./dist/web/index.js",
+      "types": "./dist/web/index.d.ts"
+    },
+    "./memory": {
+      "import": "./dist/memory/index.js",
+      "types": "./dist/memory/index.d.ts"
+    },
+    "./autonomous": {
+      "import": "./dist/autonomous/index.js",
+      "types": "./dist/autonomous/index.d.ts"
+    },
+    "./config": {
+      "import": "./dist/config/index.js",
+      "types": "./dist/config/index.d.ts"
+    },
+    "./knowledge": {
+      "import": "./dist/knowledge/index.js",
+      "types": "./dist/knowledge/index.d.ts"
+    },
+    "./notification": {
+      "import": "./dist/notification/index.js",
+      "types": "./dist/notification/index.d.ts"
+    },
+    "./conversation": {
+      "import": "./dist/conversation/index.js",
+      "types": "./dist/conversation/index.d.ts"
+    },
+    "./desktop": {
+      "import": "./dist/desktop/index.js",
+      "types": "./dist/desktop/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "start": "tsx src/cli/bin.ts chat",
+    "start:cli": "tsx src/cli/bin.ts chat",
+    "start:telegram": "tsx src/main.ts --telegram",
+    "start:mcp": "tsx src/mcp/start-server.ts",
+    "start:dashboard": "tsx src/cli/bin.ts dashboard",
+    "start:marketplace": "tsx src/cli/bin.ts marketplace",
+    "start:web": "tsx src/cli/bin.ts web",
+    "test": "tsx src/test-v3.ts && tsx src/test-v4.ts && tsx src/test-v5.ts && tsx src/test-v6.ts && tsx src/test-v7.ts && tsx src/test-v8.ts && tsx src/test-v9.ts",
+    "test:v2": "tsx src/test-v2.ts",
+    "test:v3": "tsx src/test-v3.ts",
+    "test:v4": "tsx src/test-v4.ts",
+    "test:v5": "tsx src/test-v5.ts",
+    "test:v6": "tsx src/test-v6.ts",
+    "test:v7": "tsx src/test-v7.ts",
+    "test:v8": "tsx src/test-v8.ts",
+    "test:v9": "tsx src/test-v9.ts",
+    "test:llm": "tsx src/test-llm-e2e.ts",
+    "init": "tsx src/cli/bin.ts init",
+    "jarvis": "tsx src/cli/bin.ts"
+  },
+  "keywords": [
+    "ai-agent",
+    "ai-assistant",
+    "personal-ai",
+    "open-source",
+    "jarvis",
+    "mcp",
+    "vector-memory",
+    "rag",
+    "knowledge-base",
+    "autonomous-agent",
+    "chat-ui",
+    "multi-agent",
+    "workflow",
+    "skills",
+    "marketplace",
+    "deepseek",
+    "siliconflow",
+    "tauri"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/xuyuyu/jarvis-agent#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuyuyu/jarvis-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xuyuyu/jarvis-agent/issues"
+  },
+  "author": "xuyuyu",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "jarvis.config.yaml",
+    ".env.example"
+  ],
+  "optionalDependencies": {
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "grammy": "^1.39.3"
+  }
+}

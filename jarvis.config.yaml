@@ -1,0 +1,61 @@
+# ========================================
+# Jarvis Agent 配置文件
+# 详情参考: README.md#configuration
+# ========================================
+
+# LLM 配置 — 硅基流动 SiliconFlow (OpenAI 兼容)
+llm:
+  provider: deepseek
+  # apiKey 通过 .env 文件加载，不要写在这里
+  model: deepseek-ai/DeepSeek-V3
+  baseUrl: https://api.siliconflow.cn/v1
+  temperature: 0.7
+
+# Agent 基本配置
+agent:
+  name: Jarvis
+  persona: assistant          # assistant / content_expert / tech_geek
+  language: zh-CN
+  memoryPath: ./data/memory
+
+# 平台配置（按需启用）
+platforms:
+  xiaohongshu:
+    apiUrl: http://localhost:18060
+    enabled: true
+  wechat:
+    apiUrl: http://localhost:18061
+    enabled: false
+  douyin:
+    apiUrl: http://localhost:18070
+    enabled: false
+  bilibili:
+    apiUrl: http://localhost:18080
+    enabled: false
+
+# Telegram Bot（可选）
+# telegram:
+#   botToken: "your-bot-token"
+#   allowedUsers: [123456789]
+
+# 安全配置
+safety:
+  level: moderate             # strict / moderate / loose
+  dailyPublishLimit: 30
+  activeHours: [8, 23]
+
+# 服务配置
+server:
+  dashboardPort: 3800
+
+# 调度配置
+scheduler:
+  enabled: true
+  checkInterval: 60000
+
+# 高级配置
+advanced:
+  browserHeadless: true
+  vectorMemoryEnabled: true
+  maxConcurrency: 3
+  logLevel: info              # debug / info / warn / error
