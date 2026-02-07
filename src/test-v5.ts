@@ -493,9 +493,8 @@ async function main() {
   console.log(`  结果: ${passed} passed, ${failed} failed, ${passed + failed} total`);
   console.log("═══════════════════════════════════════════════════════════\n");
 
-  if (failed > 0) {
-    process.exit(1);
-  }
+  if (failed > 0) process.exit(1);
+  process.exit(0);
 }
 
 main().catch(console.error);

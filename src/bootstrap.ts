@@ -305,7 +305,7 @@ export async function createJarvis(options?: JarvisOptions): Promise<JarvisInsta
   // ==================== 关闭 ====================
 
   async function shutdown(): Promise<void> {
-    web.stop();
+    await web.stop();
     scheduler.stop();
     await agent.shutdown();
   }

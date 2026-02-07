@@ -318,9 +318,8 @@ async function main(): Promise<void> {
   console.log(`📊 测试结果: ✅ ${passed} 通过  ❌ ${failed} 失败  ⏱️ ${elapsed}ms`);
   console.log("=".repeat(50));
 
-  if (failed > 0) {
-    process.exit(1);
-  }
+  if (failed > 0) process.exit(1);
+  process.exit(0);
 }
 
 main().catch((err) => {

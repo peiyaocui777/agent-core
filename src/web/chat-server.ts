@@ -88,12 +88,24 @@ export class WebChatServer {
     });
   }
 
-  stop(): void {
+  /** 停止服务，返回 Promise 在完全关闭后 resolve */
+  stop(): Promise<void> {
     for (const client of this.sseClients) {
       try { client.end(); } catch { /* noop */ }
     }
     this.sseClients.clear();
-    this.server?.close();
+    if (!this.server) return Promise.resolve();
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        this.server = undefined;
+        resolve();
+      };
+      this.server!.close(finish);
+      setTimeout(finish, 3000);
+    });
   }
 
   // ==================== 路由 ====================

@@ -466,7 +466,8 @@ async function main() {
   });
 
   // 关闭服务
-  webServer.stop();
+  await webServer.stop();
+  await agent.shutdown();
 
   // ==================== 5. 集成测试 ====================
   console.log("\n📦 5. 集成测试");
@@ -566,9 +567,8 @@ async function main() {
   console.log(`📊 Phase 6 测试结果: ${pass} passed, ${fail} failed (共 ${pass + fail})`);
   console.log(`${"=".repeat(50)}\n`);
 
-  if (fail > 0) {
-    process.exit(1);
-  }
+  if (fail > 0) process.exit(1);
+  process.exit(0);
 }
 
 main().catch((err) => {

@@ -135,7 +135,16 @@ platforms:
 
 ---
 
-## 4. Docker Compose 一键启动所有代理
+## 4. 一体化部署（Docker Compose）
+
+**无需单独部署**，一个 Compose 文件同时启动 Jarvis + 所有平台代理：
+
+```bash
+# 合并主服务和平台代理
+docker-compose -f docker-compose.yml -f docker-compose.platforms.yml up -d
+```
+
+`docker-compose.platforms.yml` 模板：
 
 ```yaml
 # docker-compose.platforms.yml
@@ -143,27 +152,30 @@ version: "3.8"
 
 services:
   xhs-proxy:
-    build: ./opensource/登录认证/xiaohongshu-mcp
+    image: xiaohongshu-mcp:latest  # 需自行构建
     ports: ["18060:18060"]
-    volumes:
-      - xhs-data:/app/data
+    volumes: [xhs-data:/app/data]
 
   wechat-proxy:
-    build: ./opensource/平台发布/wenyan-mcp
+    image: wenyan-mcp:latest
     ports: ["18061:18061"]
 
   social-upload:
-    build: ./opensource/平台发布/social-auto-upload
-    ports:
-      - "18070:18070"
-      - "18080:18080"
-      - "18090:18090"
-      - "18100:18100"
-    environment:
-      - PLAYWRIGHT_BROWSERS_PATH=/app/browsers
+    image: social-auto-upload:latest
+    ports: ["18070:18070", "18080:18080", "18090:18090", "18100:18100"]
 
 volumes:
   xhs-data:
+```
+
+将 Jarvis 与代理放在同一网络中，`jarvis.config.yaml` 的 `platforms.*.apiUrl` 使用服务名：
+
+```yaml
+platforms:
+  xiaohongshu:
+    apiUrl: http://xhs-proxy:18060
+  wechat:
+    apiUrl: http://wechat-proxy:18061
 ```
 
 ---

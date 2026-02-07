@@ -39,7 +39,7 @@ const DEFAULT_CONFIG: TauriProjectConfig = {
   appName: "Jarvis AI",
   version: "1.0.0",
   identifier: "com.jarvis.agent",
-  webPort: 3900,
+  webPort: 3800,
   width: 1200,
   height: 800,
   minWidth: 400,

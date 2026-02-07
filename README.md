@@ -271,6 +271,15 @@ npm run test:llm           # 真实 LLM 联调测试
 
 ---
 
+## 文档
+
+- [FAQ](docs/FAQ.md) — 常见问题（平台集成、Telegram 界面、Skill 扩展）
+- [示例代码](docs/EXAMPLES.md) — createJarvis、知识库、记忆、事件
+- [Skill 扩展](docs/SKILL-EXTENSIONS.md) — 热门参考项目 + 自定义 Skill
+- [平台对接](docs/PLATFORM-GUIDE.md) — 小红书/公众号/抖音等 6 平台
+
+---
+
 ## License
 
 MIT

@@ -518,6 +518,7 @@ async function main() {
   console.log("═══════════════════════════════════════════════════════════\n");
 
   if (failed > 0) process.exit(1);
+  process.exit(0);
 }
 
 main().catch(console.error);

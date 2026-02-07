@@ -509,6 +509,7 @@ Agent 可以自主规划和执行多步任务。
   console.log(`${"=".repeat(50)}\n`);
 
   if (fail > 0) process.exit(1);
+  process.exit(0);
 }
 
 main().catch((err) => {
